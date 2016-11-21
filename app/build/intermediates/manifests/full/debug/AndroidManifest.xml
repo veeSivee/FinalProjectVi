@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.iak.vi.finalprojectvi.ListMovie" />
+        <activity android:name="com.iak.vi.finalprojectvi.main.ListMovie" />
     </application>
 
 </manifest>
