@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.Datamovie;
+import com.iak.vi.finalprojectvi.data.PopularMovie;
 
 import java.util.List;
 
@@ -23,8 +25,6 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
         setContentView(R.layout.activity_list_movie);
 
         init();
-
-        addDummyData();
     }
 
     private void init(){
@@ -42,15 +42,17 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
         presenter.start();
     }
 
-    private void addDummyData(){
-        listMovieAdapter.clearAllItem();
-        for (int i = 0; i < 5; i++){
-            listMovieAdapter.addItem(i,"http://image.tmdb.org/t/p/w185//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
-        }
-    }
-
     @Override
     public void onGetPopularMovieSuccess(List<Datamovie> datamovies) {
+
+        List<PopularMovie> popularMovieList = datamovies.get(0).getMovieArrayList();
+
+        String path1 = "http://image.tmdb.org/t/p/w185/";
+
+        for (PopularMovie popularMovie : popularMovieList){
+
+            listMovieAdapter.addItem(listMovieAdapter.getItemCount(), path1,popularMovie);
+        }
 
     }
 

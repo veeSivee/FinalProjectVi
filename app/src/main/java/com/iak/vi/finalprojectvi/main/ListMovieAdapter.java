@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iak.vi.finalprojectvi.R;
+import com.iak.vi.finalprojectvi.data.PopularMovie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,11 +25,13 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     private Context context;
     private LayoutInflater layoutInflater;
     private List<String> listImageUrl;
+    private List<String> listTitle;
 
     public ListMovieAdapter(Context context){
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         listImageUrl = new ArrayList<>();
+        listTitle = new ArrayList<>();
     }
 
     @Override
@@ -39,7 +42,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
 
     @Override
     public void onBindViewHolder(ItemHolder holder, int position) {
-        //holder.setItemText(listImageUrl.get(position));
+        holder.setItemText(listTitle.get(position));
         holder.setItemImage(listImageUrl.get(position));
     }
 
@@ -49,13 +52,15 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     }
 
 
-    public void addItem(int location,String pathUrl){
-        listImageUrl.add(location,pathUrl);
+    public void addItem(int location, String path1, PopularMovie popularMovie){
+        listImageUrl.add(location,path1 + popularMovie.getBackdropPath());
+        listTitle.add(location,popularMovie.getTitle());
         notifyItemInserted(location);
     }
 
     public void clearAllItem(){
         listImageUrl.clear();
+        listTitle.clear();
         notifyDataSetChanged();
     }
 
