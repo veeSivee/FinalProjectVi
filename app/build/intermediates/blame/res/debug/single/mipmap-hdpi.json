@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png",
-        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/mipmap-hdpi/ic_launcher.png"
-    },
-    {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/C:\\ANDROID\\ANDROID_KEJAR\\FinalProjectVi\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/C:\\ANDROID\\ANDROID_KEJAR\\FinalProjectVi\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     }
 ]
