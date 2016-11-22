@@ -48,7 +48,7 @@ public class PopularMovie implements Parcelable {
     boolean isVideoExist;
 
     @SerializedName("vote_average")
-    String voteAverage;
+    float voteAverage;
 
     public String getPosterPath() {
         return posterPath;
@@ -146,11 +146,11 @@ public class PopularMovie implements Parcelable {
         isVideoExist = videoExist;
     }
 
-    public String getVoteAverage() {
+    public float getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(String voteAverage) {
+    public void setVoteAverage(float voteAverage) {
         this.voteAverage = voteAverage;
     }
 
@@ -179,7 +179,7 @@ public class PopularMovie implements Parcelable {
         popularity = in.readString();
         voteCount = in.readString();
         isVideoExist = in.readByte() != 0;
-        voteAverage = in.readString();
+        voteAverage = in.readFloat();
     }
 
     @Override
@@ -201,6 +201,6 @@ public class PopularMovie implements Parcelable {
         parcel.writeString(popularity);
         parcel.writeString(voteCount);
         parcel.writeByte((byte) (isVideoExist ? 1 : 0));
-        parcel.writeString(voteAverage);
+        parcel.writeFloat(voteAverage);
     }
 }

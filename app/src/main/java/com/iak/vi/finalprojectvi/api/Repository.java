@@ -1,5 +1,6 @@
 package com.iak.vi.finalprojectvi.api;
 
+import com.iak.vi.finalprojectvi.data.DataTrailer;
 import com.iak.vi.finalprojectvi.data.Datamovie;
 
 import java.util.List;
@@ -21,5 +22,10 @@ public class Repository implements DataSource{
     @Override
     public Observable<List<Datamovie>> getPopularMovie() {
         return dataSource.getPopularMovie();
+    }
+
+    @Override
+    public Observable<DataTrailer> getTrailer(String id) {
+        return dataSource.getTrailer(id);
     }
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.iak.vi.finalprojectvi.api.ApiClient;
 import com.iak.vi.finalprojectvi.api.ApiService;
 import com.iak.vi.finalprojectvi.api.DataSource;
+import com.iak.vi.finalprojectvi.data.DataTrailer;
 import com.iak.vi.finalprojectvi.data.Datamovie;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class MovieDataSource implements DataSource{
 
     private ApiClient apiClient;
     private Call<Datamovie> requestDataMovie;
+    private Call<DataTrailer> requestDataTrailer;
 
     public MovieDataSource(){
         apiClient = ApiService.createService(ApiClient.class);
@@ -44,7 +46,7 @@ public class MovieDataSource implements DataSource{
                 requestDataMovie.enqueue(new Callback<Datamovie>() {
                     @Override
                     public void onResponse(Call<Datamovie> call, Response<Datamovie> response) {
-                        Log.e("response","response \n" + response.headers());
+                        //Log.e("response","response \n" + response.headers());
                         String str = call.request().url().toString();
                         Datamovie datamovie = response.body();
 
@@ -71,6 +73,36 @@ public class MovieDataSource implements DataSource{
                     }
                 });
 
+            }
+        }).subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    public Observable<DataTrailer> getTrailer(final String id) {
+        return Observable.create(new Observable.OnSubscribe<DataTrailer>() {
+            @Override
+            public void call(final Subscriber<? super DataTrailer> subscriber) {
+
+                requestDataTrailer = apiClient.getTrailer(id);
+                requestDataTrailer.enqueue(new Callback<DataTrailer>() {
+                    @Override
+                    public void onResponse(Call<DataTrailer> call, Response<DataTrailer> response) {
+
+                        String str = call.request().url().toString();
+                        DataTrailer dataTrailer = response.body();
+
+                        if (dataTrailer != null){
+                            subscriber.onNext(dataTrailer);
+                            subscriber.onCompleted();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<DataTrailer> call, Throwable t) {
+                        subscriber.onError(t);
+                        subscriber.onCompleted();
+                    }
+                });
             }
         }).subscribeOn(Schedulers.io());
     }

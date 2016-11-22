@@ -16,7 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.iak.vi.finalprojectvi.MainActivity" >
+        <activity
+            android:name="com.iak.vi.finalprojectvi.MainActivity"
+            android:theme="@style/AppThemeNoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +26,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.iak.vi.finalprojectvi.main.ListMovie" />
-        <activity android:name="com.iak.vi.finalprojectvi.movie.DetailMovie" />
+        <activity
+            android:name="com.iak.vi.finalprojectvi.movie.DetailMovie"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>

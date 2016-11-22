@@ -348,11 +348,27 @@
     <string name="app_name">FinalProjectVi</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <style name="ActionBar.PopupThemeOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="ActionBar.ThemeOverlay" parent="">
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="colorControlNormal">#fff</item>
+        <item name="colorControlHighlight">#3fff</item>
+    </style>
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/body_text_white</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -1369,6 +1385,11 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
+    <style name="CustomActionBar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
     <style name="MovieItemText">
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_width">match_parent</item>
@@ -1629,6 +1650,9 @@
     <style name="ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat.Dialog"/>
     <style name="ThemeOverlay.AppCompat.Dialog.Alert" parent="Base.ThemeOverlay.AppCompat.Dialog.Alert"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <style name="Toolbar">
+        <item name="android:background">?colorPrimary</item>
+    </style>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">

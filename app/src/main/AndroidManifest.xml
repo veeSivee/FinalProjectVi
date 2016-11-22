@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppThemeNoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".main.ListMovie" />
-        <activity android:name=".movie.DetailMovie"></activity>
+        <activity android:name=".movie.DetailMovie"
+            android:theme="@style/AppThemeNoActionBar"></activity>
     </application>
 
 </manifest>

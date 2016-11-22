@@ -4,10 +4,6 @@
     android:id="@+id/activity_detail_movie"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.iak.vi.finalprojectvi.movie.DetailMovie">
 
     <ImageView
@@ -16,6 +12,18 @@
         android:layout_height="200dp"
         android:src="@drawable/heart_black"
         android:background="@android:color/holo_blue_dark"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_play_movie" />
+    </RelativeLayout>
+
 
     <ImageView
         android:id="@+id/iv_detail_movie_poster"
@@ -28,15 +36,36 @@
 
     <TextView
         android:id="@+id/tv_detail_movie_title"
-        style="@style/MovieItemText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/iv_detail_movie_poster"
         android:layout_below="@+id/iv_detail_movie_banner"
         android:text="I'm movie Title"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
         android:layout_margin="20dp"
-        android:textSize="18sp"/>
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_release_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_detail_movie_title"
+        android:layout_toRightOf="@+id/iv_detail_movie_poster"
+        android:layout_marginLeft="20dp"
+        android:textSize="16sp"/>
+
+    <RatingBar
+        android:id="@+id/rb_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="2.0"
+        android:layout_toRightOf="@+id/iv_detail_movie_poster"
+        android:layout_below="@+id/tv_release_date"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        style="@android:style/Widget.Holo.RatingBar.Indicator" />
 
     <TextView
         android:id="@+id/tv_detail_description"
@@ -44,6 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_detail_movie_poster"
         android:text="description"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
         android:layout_margin="10dp"/>
 
 </RelativeLayout>

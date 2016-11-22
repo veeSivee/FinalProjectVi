@@ -24,6 +24,8 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_movie);
 
+        setTitle("Popular Movie");
+
         init();
     }
 

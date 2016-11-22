@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,6 +138,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
             integer = integer == null ? 0 : integer;
             switch (integer){
                 case R.drawable.heart_black:
+                    //Log.e("Change","Change color " + popularMovie.getId());
                     imageView.setImageResource(R.drawable.heart_red);
                     imageView.setTag(R.drawable.heart_red);
                     popularMoviesFavorite.add(popularMovie);

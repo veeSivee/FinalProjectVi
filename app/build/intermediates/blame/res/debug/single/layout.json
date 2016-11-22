@@ -108,6 +108,10 @@
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/select_dialog_item_material.xml"
     },
     {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/toolbar_transparent.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/layout/toolbar_transparent.xml"
+    },
+    {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_bar_title_item.xml"
     },
@@ -130,6 +134,10 @@
     {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/toolbar.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/layout/toolbar.xml"
     },
     {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
