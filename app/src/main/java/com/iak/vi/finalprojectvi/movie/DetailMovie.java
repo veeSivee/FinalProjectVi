@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Window;
 import android.widget.ImageView;
@@ -24,7 +25,7 @@ import java.util.List;
 public class DetailMovie extends AppCompatActivity implements DetailMovieContract.View{
 
     private ImageView ivBanner, ivPoster;
-    private TextView tvTitle, tvDescription, tvReleaseDate;
+    private TextView tvTitle, tvDescription, tvReleaseDate, tvListTrailer;
     private RatingBar rbRating;
     private RecyclerView rvListTrailer;
     PopularMovie popularMovie;
@@ -60,6 +61,7 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
         tvReleaseDate = (TextView) findViewById(R.id.tv_release_date);
         rbRating = (RatingBar) findViewById(R.id.rb_rating);
         rvListTrailer = (RecyclerView) findViewById(R.id.rv_list_trailer);
+        tvListTrailer = (TextView) findViewById(R.id.tv_list_trailer);
 
         if(b != null){
             popularMovie = b.getParcelable("movie");
@@ -125,10 +127,18 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
         List<DataTrailerDetail> dataTrailerDetail = dataTrailer.getTrailerDetailArrayList();
 
+        String trailerName = "";
+
         for (DataTrailerDetail dataTrailerDetail1 : dataTrailerDetail){
-            Log.e("Detail", "Detail " + dataTrailerDetail1.getNameTrailer());
+
+            if(!TextUtils.isEmpty(trailerName)){
+                trailerName += "\n";
+            }
+            trailerName += dataTrailerDetail1.getNameTrailer();
             //set to adapter recyclerview
         }
+
+        tvListTrailer.setText(trailerName);
     }
 
     @Override
