@@ -2,10 +2,12 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    app:cardUseCompatPadding="true">
+    android:layout_margin="5dp"
+    app:cardUseCompatPadding="true"
+    android:background="@android:drawable/dialog_holo_dark_frame">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +16,7 @@
         <ImageView
             android:id="@+id/ivMoviePoster"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="250dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,16 +25,17 @@
 
             <TextView
                 android:id="@+id/tvLink"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_toLeftOf="@+id/ivFavorite"
-                android:text="title"
-                android:textStyle="bold"
+                android:layout_toLeftOf="@+id/iv_favorite"
                 android:gravity="center_vertical"
-                android:textColor="@color/colorPrimary"/>
+                style="@style/MovieItemText"
+                android:lines="1"
+                android:textColor="@color/body_text_black"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                tools:text="Title"/>
 
             <ImageView
-                android:id="@+id/ivFavorite"
+                android:id="@+id/iv_favorite"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
