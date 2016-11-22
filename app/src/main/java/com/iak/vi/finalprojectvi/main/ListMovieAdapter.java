@@ -1,6 +1,8 @@
 package com.iak.vi.finalprojectvi.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.PopularMovie;
+import com.iak.vi.finalprojectvi.movie.DetailMovie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -98,7 +101,11 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
             card_1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Bundle b = new Bundle();
+                    b.putParcelable("movie",popularMovie);
+                    Intent intent = new Intent(context, DetailMovie.class);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
                 }
             });
         }

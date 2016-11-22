@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.iak.vi.finalprojectvi.main.ListMovie" />
+        <activity android:name="com.iak.vi.finalprojectvi.movie.DetailMovie" />
     </application>
 
 </manifest>
