@@ -17,4 +17,6 @@ public interface DataSource {
     Observable<List<Datamovie>> getPopularMovie();
 
     Observable<DataTrailer> getTrailer(String id);
+
+    Observable<List<Datamovie>> getTopRated();
 }

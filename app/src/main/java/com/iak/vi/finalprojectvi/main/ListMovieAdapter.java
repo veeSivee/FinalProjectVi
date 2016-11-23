@@ -71,6 +71,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     public void clearAllItem(){
         listImageUrl.clear();
         listTitle.clear();
+        popularMovies.clear();
         notifyDataSetChanged();
     }
 

@@ -28,4 +28,9 @@ public class Repository implements DataSource{
     public Observable<DataTrailer> getTrailer(String id) {
         return dataSource.getTrailer(id);
     }
+
+    @Override
+    public Observable<List<Datamovie>> getTopRated() {
+        return dataSource.getTopRated();
+    }
 }

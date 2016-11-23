@@ -533,6 +533,8 @@ int id action_menu_presenter 0x7f0b0003
 int id action_mode_bar 0x7f0b0043
 int id action_mode_bar_stub 0x7f0b0042
 int id action_mode_close_button 0x7f0b0027
+int id action_popular 0x7f0b0078
+int id action_top_rated 0x7f0b0079
 int id activity_chooser_view_content 0x7f0b0028
 int id activity_detail_movie 0x7f0b0055
 int id activity_list_movie 0x7f0b005f
@@ -688,6 +690,7 @@ int layout support_simple_spinner_dropdown_item 0x7f04002a
 int layout toolbar 0x7f04002b
 int layout toolbar_layout 0x7f04002c
 int layout toolbar_transparent 0x7f04002d
+int menu main 0x7f0d0000
 int mipmap ic_launcher 0x7f030000
 int string abc_action_bar_home_description 0x7f060000
 int string abc_action_bar_home_description_format 0x7f060001
@@ -721,9 +724,11 @@ int string abc_shareactionprovider_share_with 0x7f060010
 int string abc_shareactionprovider_share_with_application 0x7f060011
 int string abc_toolbar_collapse_description 0x7f060012
 int string app_name 0x7f060021
+int string popular 0x7f060022
 int string search_menu_title 0x7f060013
 int string status_bar_notification_info_overflow 0x7f060014
-int string title_trailer 0x7f060022
+int string title_trailer 0x7f060023
+int string top_rated 0x7f060024
 int style ActionBar_PopupThemeOverlay 0x7f08008b
 int style ActionBar_ThemeOverlay 0x7f08008c
 int style ActionBar_TitleText 0x7f08008d

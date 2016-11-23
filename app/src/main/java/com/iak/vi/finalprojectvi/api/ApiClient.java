@@ -18,4 +18,8 @@ public interface ApiClient {
 
     @GET("http://api.themoviedb.org/3/movie/{id}/videos?api_key=2343de58f84ee178878b612179f0c0a4")
     Call<DataTrailer> getTrailer(@Path("id") String ID);
+
+
+    @GET("/3/movie/top_rated?api_key=2343de58f84ee178878b612179f0c0a4")
+    Call<Datamovie> getTopRatedMovie();
 }

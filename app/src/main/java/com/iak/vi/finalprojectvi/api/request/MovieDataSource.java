@@ -106,4 +106,42 @@ public class MovieDataSource implements DataSource{
             }
         }).subscribeOn(Schedulers.io());
     }
+
+    @Override
+    public Observable<List<Datamovie>> getTopRated() {
+        return Observable.create(new Observable.OnSubscribe<List<Datamovie>>() {
+            @Override
+            public void call(final Subscriber<? super List<Datamovie>> subscriber) {
+                final List<Datamovie> datamovieList = new ArrayList<Datamovie>();
+                requestDataMovie = apiClient.getTopRatedMovie();
+                requestDataMovie.enqueue(new Callback<Datamovie>() {
+                    @Override
+                    public void onResponse(Call<Datamovie> call, Response<Datamovie> response) {
+
+                        Datamovie datamovie = response.body();
+
+                        if(datamovie != null){
+                            datamovieList.add(datamovie);
+                        }
+                        datamovieList.add(datamovie);
+
+
+                        if (datamovieList.size()>0){
+                            subscriber.onNext(datamovieList);
+                        }
+
+                        subscriber.onCompleted();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Datamovie> call, Throwable t) {
+                        datamovieList.clear();
+
+                        subscriber.onError(t);
+                        subscriber.onCompleted();
+                    }
+                });
+            }
+        });
+    }
 }

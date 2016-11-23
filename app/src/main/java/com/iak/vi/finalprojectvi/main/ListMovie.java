@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.Datamovie;
@@ -29,6 +31,31 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
         init();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true; // super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.action_popular:
+                listMovieAdapter.clearAllItem();
+                presenter.selectPopularMovie();
+                break;
+
+            case R.id.action_top_rated:
+                listMovieAdapter.clearAllItem();
+                presenter.selectTopRatedMovie();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void init(){
         rvListMovie = (RecyclerView)findViewById(R.id.rvListMovie);
 
@@ -46,7 +73,6 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
 
     @Override
     public void onGetPopularMovieSuccess(List<Datamovie> datamovies) {
-
         List<PopularMovie> popularMovieList = datamovies.get(0).getMovieArrayList();
 
         String path1 = "http://image.tmdb.org/t/p/w185/";
@@ -65,7 +91,14 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
 
     @Override
     public void onGetTopRatedMovieSuccess(List<Datamovie> datamovies) {
+        List<PopularMovie> popularMovieList = datamovies.get(0).getMovieArrayList();
 
+        String path1 = "http://image.tmdb.org/t/p/w185/";
+
+        for (PopularMovie popularMovie : popularMovieList){
+
+            listMovieAdapter.addItem(listMovieAdapter.getItemCount(), path1,popularMovie);
+        }
     }
 
     @Override
