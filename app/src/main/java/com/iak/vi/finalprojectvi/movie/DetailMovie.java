@@ -3,6 +3,7 @@ package com.iak.vi.finalprojectvi.movie;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,12 +26,13 @@ import java.util.List;
 public class DetailMovie extends AppCompatActivity implements DetailMovieContract.View{
 
     private ImageView ivBanner, ivPoster;
-    private TextView tvTitle, tvDescription, tvReleaseDate, tvListTrailer;
+    private TextView tvTitle, tvDescription, tvReleaseDate;
     private RatingBar rbRating;
     private RecyclerView rvListTrailer;
     PopularMovie popularMovie;
 
     private DetailMovieContract.Presenter presenter;
+    private TrailerMovieAdapter trailerMovieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,13 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
         tvReleaseDate = (TextView) findViewById(R.id.tv_release_date);
         rbRating = (RatingBar) findViewById(R.id.rb_rating);
         rvListTrailer = (RecyclerView) findViewById(R.id.rv_list_trailer);
-        tvListTrailer = (TextView) findViewById(R.id.tv_list_trailer);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
+        rvListTrailer.setHasFixedSize(true);
+        rvListTrailer.setLayoutManager(gridLayoutManager);
+
+        trailerMovieAdapter = new TrailerMovieAdapter(this);
+        rvListTrailer.setAdapter(trailerMovieAdapter);
 
         if(b != null){
             popularMovie = b.getParcelable("movie");
@@ -112,7 +120,6 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
         Date datee = format.parse(date);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-        //Date date2 = new Date();
         String datetime = dateFormat.format(datee);
 
         tvReleaseDate.setText(datetime);
@@ -127,18 +134,10 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
         List<DataTrailerDetail> dataTrailerDetail = dataTrailer.getTrailerDetailArrayList();
 
-        String trailerName = "";
-
-        for (DataTrailerDetail dataTrailerDetail1 : dataTrailerDetail){
-
-            if(!TextUtils.isEmpty(trailerName)){
-                trailerName += "\n";
-            }
-            trailerName += dataTrailerDetail1.getNameTrailer();
-            //set to adapter recyclerview
+        for (int i = 0; i < dataTrailerDetail.size() ; i++) {
+            DataTrailerDetail dataTrailerDetail1 = dataTrailerDetail.get(i);
+            trailerMovieAdapter.addItem( trailerMovieAdapter.getItemCount(),dataTrailerDetail1.getNameTrailer(), dataTrailerDetail1.getSiteTrailer());
         }
-
-        tvListTrailer.setText(trailerName);
     }
 
     @Override

@@ -84,20 +84,22 @@
         android:layout_height="3dp"
         android:layout_margin="3dp"
         android:background="@android:color/holo_blue_dark"/>
-
-    <TextView
-        android:id="@+id/tv_list_trailer"
+    <View
+        android:id="@+id/view_line2"
         android:layout_below="@+id/view_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:layout_height="3dp"
+        android:layout_margin="3dp"
+        android:background="@android:color/holo_blue_dark"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list_trailer"
-        android:layout_below="@+id/view_line"
+        android:layout_below="@+id/view_line2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
     </android.support.v7.widget.RecyclerView>
+
 
 </RelativeLayout>
