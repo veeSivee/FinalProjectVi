@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Nov 23 13:08:43 WIB 2016
+#Wed Nov 23 14:15:47 WIB 2016
 14.set=ANDROID_RESOURCE
 180.file=/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/resources-debug.ap_/res/layout-v17/notification_template_lines.xml
 118.set=ANDROID_RESOURCE

@@ -1,6 +1,8 @@
 package com.iak.vi.finalprojectvi.movie;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,11 +24,13 @@ import java.util.List;
 
 public class TrailerMovieAdapter extends RecyclerView.Adapter<TrailerMovieAdapter.ItemHolder>{
 
+    private Context context;
     private LayoutInflater layoutInflater;
     private List<String> listTitleTrailer;
     private List<String> listPathTrailer;
 
     public TrailerMovieAdapter(Context context){
+        this.context = context;
         layoutInflater = LayoutInflater.from(context);
         listTitleTrailer = new ArrayList<>();
         listPathTrailer = new ArrayList<>();
@@ -66,6 +70,7 @@ public class TrailerMovieAdapter extends RecyclerView.Adapter<TrailerMovieAdapte
 
         private CardView cardView;
         private TextView tvTitleTrailer;
+        private String keyUrl;
 
         public ItemHolder(CardView itemView){
             super(itemView);
@@ -81,13 +86,14 @@ public class TrailerMovieAdapter extends RecyclerView.Adapter<TrailerMovieAdapte
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + keyUrl)));
                 }
             });
         }
 
         public void setTitleTrailer(String titleTrailer, String pathUrlTrailer){
             tvTitleTrailer.setText(titleTrailer);
+            keyUrl = pathUrlTrailer;
         }
     }
 }

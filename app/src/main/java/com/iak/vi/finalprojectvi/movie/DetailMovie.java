@@ -1,5 +1,7 @@
 package com.iak.vi.finalprojectvi.movie;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -18,12 +21,14 @@ import com.iak.vi.finalprojectvi.data.DataTrailerDetail;
 import com.iak.vi.finalprojectvi.data.PopularMovie;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class DetailMovie extends AppCompatActivity implements DetailMovieContract.View{
+public class DetailMovie extends AppCompatActivity implements DetailMovieContract.View, View.OnClickListener {
 
     private ImageView ivBanner, ivPoster;
     private TextView tvTitle, tvDescription, tvReleaseDate;
@@ -33,6 +38,8 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
     private DetailMovieContract.Presenter presenter;
     private TrailerMovieAdapter trailerMovieAdapter;
+
+    private String urlTrailer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,8 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
         tvReleaseDate = (TextView) findViewById(R.id.tv_release_date);
         rbRating = (RatingBar) findViewById(R.id.rb_rating);
         rvListTrailer = (RecyclerView) findViewById(R.id.rv_list_trailer);
+
+        ivBanner.setOnClickListener(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
         rvListTrailer.setHasFixedSize(true);
@@ -134,14 +143,27 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
         List<DataTrailerDetail> dataTrailerDetail = dataTrailer.getTrailerDetailArrayList();
 
+        urlTrailer = dataTrailerDetail.get(dataTrailerDetail.size()-1).getKeyTrailer();
+
         for (int i = 0; i < dataTrailerDetail.size() ; i++) {
             DataTrailerDetail dataTrailerDetail1 = dataTrailerDetail.get(i);
-            trailerMovieAdapter.addItem( trailerMovieAdapter.getItemCount(),dataTrailerDetail1.getNameTrailer(), dataTrailerDetail1.getSiteTrailer());
+            trailerMovieAdapter.addItem( trailerMovieAdapter.getItemCount(),dataTrailerDetail1.getNameTrailer(), dataTrailerDetail1.getKeyTrailer());
         }
     }
 
     @Override
     public void onGetTrailerFailed(String message) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_detail_movie_banner:
+                if(!TextUtils.isEmpty(urlTrailer)){
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + urlTrailer)));
+                }
+                break;
+        }
     }
 }

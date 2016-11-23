@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/select_dialog_singlechoice_material.xml"
-    },
-    {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/card_movie_trailer.xml",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/layout/card_movie_trailer.xml"
+    },
+    {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
