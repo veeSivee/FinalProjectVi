@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -34,6 +36,7 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
     private TextView tvTitle, tvDescription, tvReleaseDate;
     private RatingBar rbRating;
     private RecyclerView rvListTrailer;
+    private Toolbar toolbar;
     PopularMovie popularMovie;
 
     private DetailMovieContract.Presenter presenter;
@@ -47,6 +50,8 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
         setContentView(R.layout.activity_detail_movie);
 
         init();
+
+        initToolbar();
 
         showData();
     }
@@ -63,6 +68,7 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
         presenter = new DetailMoviePresenter(this);
 
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         ivBanner = (ImageView) findViewById(R.id.iv_detail_movie_banner);
         ivPoster = (ImageView) findViewById(R.id.iv_detail_movie_poster);
         tvTitle = (TextView) findViewById(R.id.tv_detail_movie_title);
@@ -85,6 +91,11 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
             presenter.getDataTrailer(String.valueOf(popularMovie.getId()));
         }
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void showData(){
@@ -165,5 +176,15 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home :
+                onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
