@@ -33,7 +33,6 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
     @Override
     public void start() {
         selectPopularMovie();
-        //selectTopRatedMovie();
     }
 
     @Override

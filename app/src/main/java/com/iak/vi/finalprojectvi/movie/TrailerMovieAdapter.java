@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.iak.vi.finalprojectvi.R;
+import com.iak.vi.finalprojectvi.util.ConstantData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +87,7 @@ public class TrailerMovieAdapter extends RecyclerView.Adapter<TrailerMovieAdapte
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + keyUrl)));
+                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(ConstantData.YOUTUBE_CHANNEL_URL + keyUrl)));
                 }
             });
         }

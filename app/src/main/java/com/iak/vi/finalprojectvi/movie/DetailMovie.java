@@ -9,10 +9,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -21,9 +19,8 @@ import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.DataTrailer;
 import com.iak.vi.finalprojectvi.data.DataTrailerDetail;
 import com.iak.vi.finalprojectvi.data.PopularMovie;
+import com.iak.vi.finalprojectvi.util.ConstantData;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -100,14 +97,12 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
 
     private void showData(){
         try{
-            String path1 = "http://image.tmdb.org/t/p/w185/";
-
             showTitle(popularMovie.getTitle());
             showReleaseDate(popularMovie.getReleaseDate());
             showDescription(popularMovie.getOverview());
             showRating(popularMovie.getVoteAverage()/2);
-            showPoster(path1 + popularMovie.getPosterPath());
-            showBanner(path1 + popularMovie.getBackdropPath());
+            showPoster(ConstantData.PATH_IMAGE_MOVIE + popularMovie.getPosterPath());
+            showBanner(ConstantData.PATH_IMAGE_MOVIE + popularMovie.getBackdropPath());
         }catch (Exception e){
 
         }
@@ -172,7 +167,7 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
         switch (view.getId()){
             case R.id.iv_detail_movie_banner:
                 if(!TextUtils.isEmpty(urlTrailer)){
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + urlTrailer)));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse( ConstantData.YOUTUBE_CHANNEL_URL + urlTrailer)));
                 }
                 break;
         }

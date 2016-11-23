@@ -46,8 +46,7 @@ public class MovieDataSource implements DataSource{
                 requestDataMovie.enqueue(new Callback<Datamovie>() {
                     @Override
                     public void onResponse(Call<Datamovie> call, Response<Datamovie> response) {
-                        //Log.e("response","response \n" + response.headers());
-                        String str = call.request().url().toString();
+
                         Datamovie datamovie = response.body();
 
                         if(datamovie != null){
@@ -61,7 +60,6 @@ public class MovieDataSource implements DataSource{
                         }
 
                         subscriber.onCompleted();
-                        //subscriber.onNext(datamovieList);
                     }
 
                     @Override

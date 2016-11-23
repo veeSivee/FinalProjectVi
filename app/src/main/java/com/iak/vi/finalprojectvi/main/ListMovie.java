@@ -4,13 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.Datamovie;
 import com.iak.vi.finalprojectvi.data.PopularMovie;
+import com.iak.vi.finalprojectvi.util.ConstantData;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
-        return true; // super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
@@ -71,17 +71,20 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
         presenter.start();
     }
 
-    @Override
-    public void onGetPopularMovieSuccess(List<Datamovie> datamovies) {
-        List<PopularMovie> popularMovieList = datamovies.get(0).getMovieArrayList();
+    private void showListMovie(List<Datamovie> datamovies){
 
-        String path1 = "http://image.tmdb.org/t/p/w185/";
+        List<PopularMovie> popularMovieList = datamovies.get(0).getMovieArrayList();
 
         for (PopularMovie popularMovie : popularMovieList){
 
-            listMovieAdapter.addItem(listMovieAdapter.getItemCount(), path1,popularMovie);
+            listMovieAdapter.addItem(listMovieAdapter.getItemCount(), ConstantData.PATH_IMAGE_MOVIE,popularMovie);
         }
+    }
 
+    @Override
+    public void onGetPopularMovieSuccess(List<Datamovie> datamovies) {
+        setTitle("Popular Movie");
+        showListMovie(datamovies);
     }
 
     @Override
@@ -91,14 +94,8 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
 
     @Override
     public void onGetTopRatedMovieSuccess(List<Datamovie> datamovies) {
-        List<PopularMovie> popularMovieList = datamovies.get(0).getMovieArrayList();
-
-        String path1 = "http://image.tmdb.org/t/p/w185/";
-
-        for (PopularMovie popularMovie : popularMovieList){
-
-            listMovieAdapter.addItem(listMovieAdapter.getItemCount(), path1,popularMovie);
-        }
+        setTitle("Top Rated Movie");
+        showListMovie(datamovies);
     }
 
     @Override
