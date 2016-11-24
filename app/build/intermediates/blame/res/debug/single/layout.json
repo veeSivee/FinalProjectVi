@@ -24,12 +24,16 @@
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_screen_simple.xml"
+    },
+    {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/notification_template_lines.xml",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/notification_template_lines.xml"
     },
     {
-        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_screen_simple.xml"
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/loader_layout.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/layout/loader_layout.xml"
     },
     {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
@@ -114,6 +118,10 @@
     {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/activity_detail_movie_landscape.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/layout/activity_detail_movie_landscape.xml"
     },
     {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",

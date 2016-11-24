@@ -53,5 +53,9 @@ public interface ListMovieContract {
 
         void onRemoveFavoriteMovie(PopularMovie popularMovie);
 
+        void showLoader();
+
+        void hideLoader();
+
     }
 }

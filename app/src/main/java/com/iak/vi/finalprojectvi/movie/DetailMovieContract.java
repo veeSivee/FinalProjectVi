@@ -19,5 +19,9 @@ public interface DetailMovieContract {
         void onGetTrailerSuccess(DataTrailer dataTrailer);
 
         void onGetTrailerFailed(String message);
+
+        void showLoader();
+
+        void hideLoader();
     }
 }

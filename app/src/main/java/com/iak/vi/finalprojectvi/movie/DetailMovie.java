@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -44,7 +45,17 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_movie);
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+
+        if(width>height){
+            setContentView(R.layout.activity_detail_movie_landscape);
+        } else {
+            setContentView(R.layout.activity_detail_movie);
+        }
 
         init();
 
@@ -181,5 +192,15 @@ public class DetailMovie extends AppCompatActivity implements DetailMovieContrac
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void showLoader() {
+        findViewById(R.id.loader).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoader() {
+        findViewById(R.id.loader).setVisibility(View.GONE);
     }
 }

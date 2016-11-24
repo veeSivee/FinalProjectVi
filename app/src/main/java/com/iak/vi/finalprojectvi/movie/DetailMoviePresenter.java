@@ -23,6 +23,8 @@ public class DetailMoviePresenter implements DetailMovieContract.Presenter{
 
     @Override
     public void getDataTrailer(String id) {
+        view.showLoader();
+
         getTrailerMovie.setID(id);
         getTrailerMovie.execute(new Subscriber<DataTrailer>() {
             @Override
@@ -38,6 +40,7 @@ public class DetailMoviePresenter implements DetailMovieContract.Presenter{
             @Override
             public void onNext(DataTrailer dataTrailer) {
                 view.onGetTrailerSuccess(dataTrailer);
+                view.hideLoader();
             }
         });
     }

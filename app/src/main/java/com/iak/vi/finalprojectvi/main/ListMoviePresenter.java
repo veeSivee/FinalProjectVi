@@ -56,6 +56,7 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
 
     @Override
     public void selectPopularMovie() {
+        view.showLoader();
 
         getPopularMovie.execute(new Subscriber<List<Datamovie>>() {
             @Override
@@ -71,12 +72,15 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
             @Override
             public void onNext(List<Datamovie> datamovies) {
                 view.onGetPopularMovieSuccess(datamovies);
+                view.hideLoader();
             }
         });
     }
 
     @Override
     public void selectTopRatedMovie() {
+        view.showLoader();
+
         getTopRatedMovie.execute(new Subscriber<List<Datamovie>>() {
             @Override
             public void onCompleted() {
@@ -95,6 +99,8 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
                 if(isFirstLoad){
                     selectPopularMovie();
                     isFirstLoad = false;
+                }else {
+                    view.hideLoader();
                 }
             }
         });
@@ -102,6 +108,7 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
 
     @Override
     public void selectFavoriteMovie(String listFav) {
+        view.showLoader();
 
         String[] favList = listFav.split(",");
         List<PopularMovie> listFavMovie = new ArrayList<>();
@@ -125,6 +132,7 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
         }
 
         view.onGetFavoriteMovieSuccess(listFavMovie);
+        view.hideLoader();
 
     }
 

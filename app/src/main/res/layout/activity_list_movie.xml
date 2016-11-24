@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.iak.vi.finalprojectvi.main.ListMovie">
 
+    <include android:id="@+id/loader"
+        layout="@layout/loader_layout"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvListMovie"
         android:layout_width="match_parent"

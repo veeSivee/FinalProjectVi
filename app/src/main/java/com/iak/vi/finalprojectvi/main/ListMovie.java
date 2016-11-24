@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.Datamovie;
@@ -35,6 +37,8 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
         initSharedPreference();
 
         init();
+
+        getWidthScreen();
     }
 
     @Override
@@ -72,7 +76,7 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
 
         presenter = new ListMoviePresenter(this);
 
-        GridLayoutManager gridLayoutVertical = new GridLayoutManager(this,2);
+        GridLayoutManager gridLayoutVertical = new GridLayoutManager(this,getWidthScreen()/230);
         rvListMovie.setHasFixedSize(true);
         rvListMovie.setLayoutManager(gridLayoutVertical);
 
@@ -214,5 +218,24 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
 
     private String getListSharedPref(){
         return sharedPreferences.getString("List", null);
+    }
+
+    @Override
+    public void showLoader() {
+        findViewById(R.id.loader).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideLoader() {
+        findViewById(R.id.loader).setVisibility(View.GONE);
+    }
+
+    private int getWidthScreen(){
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+
+        return width;
     }
 }
