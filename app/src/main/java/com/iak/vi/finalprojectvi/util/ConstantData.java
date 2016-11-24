@@ -19,4 +19,6 @@ public class ConstantData {
     public static final String YOUTUBE_CHANNEL_URL = "http://www.youtube.com/watch?v=";
 
     public static final String PATH_IMAGE_MOVIE = "http://image.tmdb.org/t/p/w185/";
+
+    public static final String SHAREDPREFERENCE_REFERENCE = "Vi_Movie";
 }

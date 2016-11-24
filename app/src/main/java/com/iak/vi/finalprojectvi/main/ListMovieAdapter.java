@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by User_PC on 20/11/2016.
+ * Created by taufiqotulfaidah on 20/11/2016.
  */
 
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ItemHolder> {
@@ -30,16 +30,19 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     private LayoutInflater layoutInflater;
     private List<String> listImageUrl;
     private List<String> listTitle;
-    private List<PopularMovie> popularMoviesFavorite;
     private List<PopularMovie> popularMovies;
+    String[] listFavoriteMovie;
 
-    public ListMovieAdapter(Context context){
+    private ListMovieContract.View viewContext;
+
+    public ListMovieAdapter(Context context, ListMovieContract.View view){
         this.context = context;
+        this.viewContext = view;
         layoutInflater = LayoutInflater.from(context);
         listImageUrl = new ArrayList<>();
         listTitle = new ArrayList<>();
         popularMovies = new ArrayList<>();
-        popularMoviesFavorite = new ArrayList<>();
+        listFavoriteMovie = null;
     }
 
     @Override
@@ -53,6 +56,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
         holder.setItemText(listTitle.get(position));
         holder.setItemImage(listImageUrl.get(position));
         holder.setPopularMovie(popularMovies.get(position));
+        holder.setColorFavorite(popularMovies.get(position).isFavorite());
     }
 
     @Override
@@ -64,8 +68,19 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     public void addItem(int location, String path1, PopularMovie popularMovie){
         listImageUrl.add(location,path1 + popularMovie.getPosterPath());
         listTitle.add(location,popularMovie.getTitle());
+
+        for (String idFav : listFavoriteMovie){
+            if(idFav.equals(String.valueOf(popularMovie.getId()))){
+                popularMovie.setFavorite(true);
+            }
+        }
+
         popularMovies.add(popularMovie);
         notifyItemInserted(location);
+    }
+
+    public void setIdFavoritemovie(String favList){
+        listFavoriteMovie = favList.split(",");
     }
 
     public void clearAllItem(){
@@ -139,24 +154,29 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
             integer = integer == null ? 0 : integer;
             switch (integer){
                 case R.drawable.heart_black:
-                    //Log.e("Change","Change color " + popularMovie.getId());
                     imageView.setImageResource(R.drawable.heart_red);
                     imageView.setTag(R.drawable.heart_red);
-                    popularMoviesFavorite.add(popularMovie);
+                    viewContext.onAddFavoriteMovie(popularMovie);
                     break;
 
                 case R.drawable.heart_red:
                     imageView.setImageResource(R.drawable.heart_black);
                     imageView.setTag(R.drawable.heart_black);
-
-                    for (int i = 0; i < popularMoviesFavorite.size(); i++) {
-                         if(popularMovie.getId() == popularMoviesFavorite.get(i).getId()){
-                             popularMoviesFavorite.remove(i);
-                         }
-                    }
+                    viewContext.onRemoveFavoriteMovie(popularMovie);
                     break;
             }
 
+        }
+
+        public void setColorFavorite(boolean isFavorite){
+
+            if(isFavorite){
+                ivFavorite.setImageResource(R.drawable.heart_red);
+                ivFavorite.setTag(R.drawable.heart_red);
+            }else {
+                ivFavorite.setImageResource(R.drawable.heart_black);
+                ivFavorite.setTag(R.drawable.heart_black);
+            }
         }
 
     }

@@ -1,6 +1,7 @@
 package com.iak.vi.finalprojectvi.main;
 
 import com.iak.vi.finalprojectvi.data.Datamovie;
+import com.iak.vi.finalprojectvi.data.PopularMovie;
 
 import java.util.List;
 
@@ -22,7 +23,9 @@ public interface ListMovieContract {
 
         void selectTopRatedMovie();
 
-        void selectFavoriteMovie();
+        void selectFavoriteMovie(String listFav);
+
+        void addListMovie(List<PopularMovie> listMovie);
 
     }
 
@@ -36,7 +39,7 @@ public interface ListMovieContract {
 
         void onGetTopratedMovieFailed();
 
-        void onGetFavoriteMovieSuccess(List<Datamovie> datamovies);
+        void onGetFavoriteMovieSuccess(List<PopularMovie> datamovies);
 
         void onGetFavoriteMovieFailed();
 
@@ -45,6 +48,10 @@ public interface ListMovieContract {
         void onGetDetailMovieFailed();
 
         void gotoDetailMovie(Datamovie datamovie);
+
+        void onAddFavoriteMovie(PopularMovie popularMovie);
+
+        void onRemoveFavoriteMovie(PopularMovie popularMovie);
 
     }
 }

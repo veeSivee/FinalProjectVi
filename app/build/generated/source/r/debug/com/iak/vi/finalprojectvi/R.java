@@ -2714,13 +2714,14 @@ containing a value of this type.
         public static final int action_bar_title=0x7f0c003d;
         public static final int action_context_bar=0x7f0c005f;
         public static final int action_divider=0x7f0c0090;
+        public static final int action_favorite=0x7f0c009a;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c005b;
         public static final int action_mode_bar_stub=0x7f0c005a;
         public static final int action_mode_close_button=0x7f0c003f;
-        public static final int action_popular=0x7f0c009a;
-        public static final int action_top_rated=0x7f0c009b;
+        public static final int action_popular=0x7f0c009b;
+        public static final int action_top_rated=0x7f0c009c;
         public static final int activity_chooser_view_content=0x7f0c0040;
         public static final int activity_list_movie=0x7f0c0078;
         public static final int activity_main=0x7f0c007a;
@@ -2973,11 +2974,12 @@ containing a value of this type.
         public static final int appbar_scrolling_view_behavior=0x7f060022;
         public static final int bottom_sheet_behavior=0x7f060023;
         public static final int character_counter_pattern=0x7f060024;
-        public static final int popular=0x7f060025;
+        public static final int favorite=0x7f060025;
+        public static final int popular=0x7f060026;
         public static final int search_menu_title=0x7f060013;
         public static final int status_bar_notification_info_overflow=0x7f060014;
-        public static final int title_trailer=0x7f060026;
-        public static final int top_rated=0x7f060027;
+        public static final int title_trailer=0x7f060027;
+        public static final int top_rated=0x7f060028;
     }
     public static final class style {
         public static final int ActionBar_PopupThemeOverlay=0x7f08008d;

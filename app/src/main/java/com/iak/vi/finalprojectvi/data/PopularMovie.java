@@ -50,6 +50,8 @@ public class PopularMovie implements Parcelable {
     @SerializedName("vote_average")
     float voteAverage;
 
+    private boolean isFavorite = false;
+
     public String getPosterPath() {
         return posterPath;
     }
@@ -152,6 +154,14 @@ public class PopularMovie implements Parcelable {
 
     public void setVoteAverage(float voteAverage) {
         this.voteAverage = voteAverage;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 
     public static final Creator<PopularMovie> CREATOR = new Creator<PopularMovie>() {
