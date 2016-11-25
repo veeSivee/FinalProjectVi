@@ -188,6 +188,10 @@
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_screen_toolbar.xml"
     },
     {
+        "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/activity_launcher.xml",
+        "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/src/main/res/layout/activity_launcher.xml"
+    },
+    {
         "merged": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
         "source": "/Users/taufiqotulfaidah/Documents/Android/FinalProjectVi/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/notification_template_part_time.xml"
     },
