@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,8 +56,10 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     public void onBindViewHolder(ItemHolder holder, int position) {
         holder.setItemText(listTitle.get(position));
         holder.setItemImage(listImageUrl.get(position));
-        holder.setPopularMovie(popularMovies.get(position));
-        holder.setColorFavorite(popularMovies.get(position).isFavorite());
+        if(popularMovies.size()>0){
+            holder.setPopularMovie(popularMovies.get(position));
+            holder.setColorFavorite(popularMovies.get(position).isFavorite());
+        }
     }
 
     @Override
@@ -69,9 +72,11 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
         listImageUrl.add(location,path1 + popularMovie.getPosterPath());
         listTitle.add(location,popularMovie.getTitle());
 
-        for (String idFav : listFavoriteMovie){
-            if(idFav.equals(String.valueOf(popularMovie.getId()))){
-                popularMovie.setFavorite(true);
+        if(listFavoriteMovie != null){
+            for (String idFav : listFavoriteMovie){
+                if(idFav.equals(String.valueOf(popularMovie.getId()))){
+                    popularMovie.setFavorite(true);
+                }
             }
         }
 
@@ -80,7 +85,10 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Item
     }
 
     public void setIdFavoritemovie(String favList){
-        listFavoriteMovie = favList.split(",");
+
+        if(!TextUtils.isEmpty(favList)){
+            listFavoriteMovie = favList.split(",");
+        }
     }
 
     public void clearAllItem(){

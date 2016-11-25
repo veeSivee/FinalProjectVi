@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.iak.vi.finalprojectvi.R;
 import com.iak.vi.finalprojectvi.data.Datamovie;
@@ -22,6 +24,8 @@ import java.util.List;
 public class ListMovie extends AppCompatActivity implements ListMovieContract.View{
 
     private RecyclerView rvListMovie;
+    private TextView tvPlaceholder;
+    private ImageView ivSad;
     private ListMovieAdapter listMovieAdapter;
     private SharedPreferences sharedPreferences;
 
@@ -73,6 +77,8 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
 
     private void init(){
         rvListMovie = (RecyclerView)findViewById(R.id.rvListMovie);
+        tvPlaceholder = (TextView) findViewById(R.id.tv_placeholder);
+        ivSad = (ImageView) findViewById(R.id.iv_sad);
 
         presenter = new ListMoviePresenter(this);
 
@@ -94,6 +100,8 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
     }
 
     private void showListMovie(List<Datamovie> datamovies){
+        tvPlaceholder.setVisibility(View.GONE);
+        ivSad.setVisibility(View.GONE);
 
         listMovieAdapter.clearAllItem();
 
@@ -108,12 +116,19 @@ public class ListMovie extends AppCompatActivity implements ListMovieContract.Vi
     }
 
     private void showListMovie(List<PopularMovie> datamovies, boolean b){
+        tvPlaceholder.setVisibility(View.GONE);
+        ivSad.setVisibility(View.GONE);
 
         List<PopularMovie> popularMovieList = datamovies;
 
         for (PopularMovie popularMovie : popularMovieList){
 
             listMovieAdapter.addItem(listMovieAdapter.getItemCount(), ConstantData.PATH_IMAGE_MOVIE,popularMovie);
+        }
+
+        if(datamovies.size()<=0){
+            ivSad.setVisibility(View.VISIBLE);
+            tvPlaceholder.setVisibility(View.VISIBLE);
         }
     }
 

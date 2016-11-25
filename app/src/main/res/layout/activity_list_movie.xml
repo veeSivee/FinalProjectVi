@@ -16,4 +16,21 @@
 
     </android.support.v7.widget.RecyclerView>
 
+
+    <ImageView
+        android:id="@+id/iv_sad"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/sad"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/tv_placeholder"/>
+
+    <TextView
+        android:id="@+id/tv_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="You don\'t have favorite movie"/>
+
+
 </RelativeLayout>

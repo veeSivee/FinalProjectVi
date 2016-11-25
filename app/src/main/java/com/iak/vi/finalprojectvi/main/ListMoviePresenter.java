@@ -1,5 +1,6 @@
 package com.iak.vi.finalprojectvi.main;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.iak.vi.finalprojectvi.Injector;
@@ -8,6 +9,8 @@ import com.iak.vi.finalprojectvi.api.request.GetPopularMovie;
 import com.iak.vi.finalprojectvi.api.request.GetTopRatedMovie;
 import com.iak.vi.finalprojectvi.data.Datamovie;
 import com.iak.vi.finalprojectvi.data.PopularMovie;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,28 +113,33 @@ public class ListMoviePresenter implements ListMovieContract.Presenter{
     public void selectFavoriteMovie(String listFav) {
         view.showLoader();
 
-        String[] favList = listFav.split(",");
         List<PopularMovie> listFavMovie = new ArrayList<>();
 
+        if(!TextUtils.isEmpty(listFav)){
 
-        for (PopularMovie popularMovie : listAllMovie){
+            String[] favList = listFav.split(",");
 
-            boolean isMatch = false;
 
-            for (String idFav : favList){
+            for (PopularMovie popularMovie : listAllMovie){
 
-                if(String.valueOf(popularMovie.getId()).equals(idFav)){
-                    isMatch = true;
+                boolean isMatch = false;
+
+                for (String idFav : favList){
+
+                    if(String.valueOf(popularMovie.getId()).equals(idFav)){
+                        isMatch = true;
+                    }
+                }
+
+                if(isMatch){
+                    popularMovie.setFavorite(true);
+                    listFavMovie.add(popularMovie);
                 }
             }
 
-            if(isMatch){
-                popularMovie.setFavorite(true);
-                listFavMovie.add(popularMovie);
-            }
         }
-
         view.onGetFavoriteMovieSuccess(listFavMovie);
+
         view.hideLoader();
 
     }
